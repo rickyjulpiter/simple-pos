@@ -1,0 +1,11 @@
+{
+    "name": "rickyjulpiter/pos",
+    "description": "Simple Point of Sales System",
+    "authors": [
+        {
+            "name": "Ricky Julpiter",
+            "email": "rickyjulpiter14@gmail.com"
+        }
+    ],
+    "require": {}
+}
