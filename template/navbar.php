@@ -12,6 +12,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="varian">
+                    <span data-feather="file"></span> <i class="fa fa-cube"></i> Varian
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="products">
                     <span data-feather="file"></span> <i class="fab fa-product-hunt"></i> Produk
                 </a>

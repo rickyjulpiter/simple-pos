@@ -80,104 +80,110 @@ if (isset($_GET['delete']) && isset($_GET['categoryID'])) {
                 </div>
                 <!-- data kategori produk start -->
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="row">
-                            <?php
-                            $data_product = $pdo->query("SELECT * FROM categories WHERE status = 1 ORDER BY id DESC");
-                            while ($data = $data_product->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                            <div class="col-md-4 mb-3">
-                                <a href="?edit&categoryID=<?= $data['id'] ?>&nama=<?= $data['nama'] ?>" class="">
-                                    <div class="card">
-                                        <img class="card-img-top" src="./assets/image/category/<?= $data['gambar'] ?>">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-12 mx-auto">
-                                                    <h4 class="card-title text-center"><?= $data['nama'] ?></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <?php }
-                            ?>
-                        </div>
-                    </div>
                     <?php
                     if (isset($_GET['edit'])) {
-                    ?>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <form method="POST" enctype="multipart/form-data">
-                                    <div class="form-group row mb-1">
-                                        <label for="namaproduk" class="col-sm-4 col-form-label">Nama </label>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="nama-kategori" class="form-control"
-                                                value="<?= $_GET['nama'] ?>" placeholder="Nama Produk">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-1">
-                                        <label class="col-sm-4 col-form-label">Gambar</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" name="gambar-kategori" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <button type="submit" name="btn-update-kategori"
-                                        class="btn btn-success btn-sm float-right mt-2">Update Kategori</button>
-
-                                    <a href="?delete&categoryID=<?= $_GET['categoryID'] ?>"
-                                        class="btn btn-danger btn-sm float-left mt-2">Delete</a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
+                        echo ' <div class="col-md-7">';
+                        $categoryColumn = '<div class="col-md-6 mb-3">';
+                    } else {
+                        echo ' <div class="col-md-12">';
+                        $categoryColumn = '<div class="col-md-4 mb-3">';
                     }
                     ?>
-
-
-                </div>
-                <!-- data kategori produk end -->
-            </main>
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="tambahproduk" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
-                            <button type="button" class="close btn btn-secondary" data-dismiss="modal"
-                                aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="modal-add-product" method="POST" enctype="multipart/form-data">
-                                <div class="form-group row mb-1">
-                                    <label for="namaproduk" class="col-sm-4 col-form-label">Nama</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="nama-kategori" class="form-control" id="namaproduk"
-                                            placeholder="Nama Kategori">
+                    <div class="row">
+                        <?php
+                        $data_product = $pdo->query("SELECT * FROM categories WHERE status = 1 ORDER BY id DESC");
+                        while ($data = $data_product->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                        <?= $categoryColumn ?>
+                        <a href="?edit&categoryID=<?= $data['id'] ?>&nama=<?= $data['nama'] ?>" class="">
+                            <div class="card">
+                                <img class="card-img-top" src="./assets/image/category/<?= $data['gambar'] ?>">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 mx-auto">
+                                            <h4 class="card-title text-center"><?= $data['nama'] ?></h4>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group row mb-1">
-                                    <label class="col-sm-4 col-form-label">Gambar</label>
-                                    <div class="col-sm-8">
-                                        <input type="file" name="gambar-kategori" class="form-control"
-                                            id="customFile" />
-                                    </div>
-                                </div>
-                                <button type="submit" name="btn-tambah-produk"
-                                    class="btn btn-success float-right mt-2">Tambah Kategori</button>
-                            </form>
-                        </div>
+                            </div>
+                        </a>
                     </div>
+                    <?php }
+                ?>
+                </div>
+        </div>
+        <?php
+        if (isset($_GET['edit'])) {
+        ?>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group row mb-1">
+                            <label for="namaproduk" class="col-sm-4 col-form-label">Nama </label>
+                            <div class="col-sm-8">
+                                <input type="text" name="nama-kategori" class="form-control"
+                                    value="<?= $_GET['nama'] ?>" placeholder="Nama Produk">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <label class="col-sm-4 col-form-label">Gambar</label>
+                            <div class="col-sm-8">
+                                <input type="file" name="gambar-kategori" class="form-control" />
+                            </div>
+                        </div>
+                        <button type="submit" name="btn-update-kategori"
+                            class="btn btn-success btn-sm float-right mt-2">Update Kategori</button>
+
+                        <a href="?delete&categoryID=<?= $_GET['categoryID'] ?>"
+                            class="btn btn-danger btn-sm float-left mt-2">Delete</a>
+                    </form>
                 </div>
             </div>
-
         </div>
+        <?php
+        }
+        ?>
+
+
+    </div>
+    <!-- data kategori produk end -->
+    </main>
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="tambahproduk" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                    <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modal-add-product" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row mb-1">
+                            <label for="namaproduk" class="col-sm-4 col-form-label">Nama</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="nama-kategori" class="form-control" id="namaproduk"
+                                    placeholder="Nama Kategori">
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <label class="col-sm-4 col-form-label">Gambar</label>
+                            <div class="col-sm-8">
+                                <input type="file" name="gambar-kategori" class="form-control" id="customFile" />
+                            </div>
+                        </div>
+                        <button type="submit" name="btn-tambah-produk" class="btn btn-success float-right mt-2">Tambah
+                            Kategori</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
     </div>
     <?php include './template/script.php' ?>
 
