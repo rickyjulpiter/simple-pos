@@ -16,3 +16,11 @@ function rupiah($angka)
     $hasil_rupiah = "Rp " . number_format($angka, 0, ',', '.');
     return $hasil_rupiah;
 }
+
+function redirect($url)
+{
+    ob_start();
+    header('Location: ' . $url);
+    ob_end_flush();
+    die();
+}

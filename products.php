@@ -49,7 +49,7 @@ if (isset($_POST['btn-tambah-produk'])) {
                     while ($data = $data_product->fetch(PDO::FETCH_ASSOC)) {
                     ?>
                     <div class="col-md-3 mb-3">
-                        <a href="#" class="">
+                        <a href="" class="">
                             <div class="card">
                                 <img class="card-img-top" src="./assets/image/product/<?= $data['gambar'] ?>">
                                 <div class="card-body">

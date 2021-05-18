@@ -15,3 +15,8 @@ function formatRupiah(angka, prefix) {
     angka = split[1] != undefined ? angka + "," + split[1] : angka;
     return prefix == undefined ? angka : angka ? angka : "";
 }
+
+//prevent for resubmit form
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}

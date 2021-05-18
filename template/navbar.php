@@ -2,12 +2,17 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">
+                <a class="nav-link" aria-current="page" href="index">
                     <span data-feather="home"></span> <i class="fa fa-home"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="category">
+                    <span data-feather="file"></span> <i class="fa fa-book"></i> Kategori
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="products">
                     <span data-feather="file"></span> <i class="fab fa-product-hunt"></i> Produk
                 </a>
             </li>
